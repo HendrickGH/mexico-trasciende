@@ -182,6 +182,9 @@
   @media (hover: hover) { .pon-card:hover .flip-inner { transform: rotateY(180deg); } }
   .pon-swatch { position: absolute; left: -11%; top: -8%; width: 122%; height: 116%; max-width: none; object-fit: fill; transform: rotate(-3deg); opacity: .9; pointer-events: none; }
   .pon-card { position: relative; aspect-ratio: 2 / 3; cursor: pointer; box-shadow: 0 30px 50px -26px rgba(0,0,0,.8); border-radius: 16px; }
+  .pon-duo { aspect-ratio: 1 / 1; }
+  @media (min-width: 1024px) { .pon-duo { aspect-ratio: auto; height: 100%; } }
+  .duo-amp { text-shadow: 0 4px 18px rgba(3,20,71,.55); }
 
   /* ---------- faq ---------- */
   .faq-item { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.03); transition: background-color .3s ease, border-color .3s ease; }
@@ -237,7 +240,7 @@
     <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/75 whitespace-nowrap">
       <span class="w-1.5 h-1.5 rounded-full bg-nlime anim-glow"></span>21 Nov 2026 · CCM
     </span>
-    <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn btn-pink hidden lg:inline-flex shrink-0 h-[42px] px-6 text-sm">Comprar boletos <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="https://market.tec.mx/mexico-trasciende-4281/p" target="_blank" rel="noopener" class="btn btn-pink hidden lg:inline-flex shrink-0 h-[42px] px-6 text-sm">Comprar boletos <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button id="menuBtn" class="lg:hidden ml-auto w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú" aria-expanded="false">
       <span class="block w-6 h-[2px] bg-white"></span>
       <span class="block w-6 h-[2px] bg-white"></span>
@@ -250,7 +253,7 @@
       <a href="#ponentes" class="nav-link">Ponentes</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <span class="font-heading text-[13px] tracking-[.16em] text-white/70">Sábado 21 de noviembre 2026 · Campus CCM</span>
-      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-[#031447] font-heading tracking-[.12em] uppercase">Comprar boletos</a>
+      <a href="https://market.tec.mx/mexico-trasciende-4281/p" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-[#031447] font-heading tracking-[.12em] uppercase">Comprar boletos</a>
     </div>
   </nav>
 </header>
@@ -284,7 +287,7 @@
         <span class="inline-flex items-center gap-2.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Tec de Monterrey · Campus CCM</span>
       </div>
       <div class="hero-ctas flex flex-wrap gap-3 sm:gap-3.5 mt-8 sm:mt-9 reveal" style="transition-delay:.26s">
-        <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="btn btn-pink">Comprar boletos <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://market.tec.mx/mexico-trasciende-4281/p" target="_blank" rel="noopener" class="btn btn-pink">Comprar boletos <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#espacios" class="btn btn-ghost">Conoce los 3 espacios</a>
       </div>
       <div class="mt-8 sm:mt-10 reveal" style="transition-delay:.32s" id="countdown" aria-label="Cuenta regresiva para el evento">
@@ -491,7 +494,7 @@
         <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
         <span class="flex-1 h-px bg-ink/[.12]"></span>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" id="sponsorsGrid"></div>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-5" id="sponsorsGrid"></div>
     </div>
 
     <div class="mt-14">
@@ -603,7 +606,7 @@
     </div>
 
     <div class="flex flex-col gap-3 font-heading text-[13px] tracking-[.18em] uppercase lg:text-right">
-      <a href="https://market.tec.mx/grupos-estudiantiles---campus-ciudad-de-mexico-3707/p?skuId=20513" target="_blank" rel="noopener" class="text-nlime hover:text-white">Comprar boletos</a>
+      <a href="https://market.tec.mx/mexico-trasciende-4281/p" target="_blank" rel="noopener" class="text-nlime hover:text-white">Comprar boletos</a>
       <a href="https://instagram.com/trasciende_tec" target="_blank" rel="noopener" class="text-nlime hover:text-white">Instagram</a>
     </div>
   </div>
@@ -652,18 +655,19 @@ const ESPACIOS = [
 ];
 
 const PONENTES = [
-  { eje: 'Main Stage', status: 'Confirmada', num: '01', name: 'Galia Borja', role: 'Subgobernadora del Banco de México', photo: 'assets/p-galia.png', pos: 'center 18%',
-    bio: 'Integra la Junta de Gobierno del Banco de México, el órgano que define la política monetaria del país. Antes fue Tesorera de la Federación. En el Main Stage hablará de economía, finanzas públicas y el papel de las nuevas generaciones en el desarrollo de México.' },
-  { eje: 'Main Stage', status: 'Confirmado', num: '02', name: 'Gerardo Galindo', role: 'Ex-capitán de los Pumas, bicampeón y sobreviviente de cáncer', photo: 'assets/p-gerardo.png', pos: 'center 12%',
+  { eje: 'Main Stage', status: 'Confirmado', num: '01', name: 'Gerardo Galindo', role: 'Ex-capitán de los Pumas, bicampeón y sobreviviente de cáncer', photo: 'assets/p-gerardo.png', pos: 'center 12%',
     bio: 'Fue capitán de los Pumas de la UNAM y bicampeón del futbol mexicano. Tras enfrentar un cáncer volvió a la vida pública como ejemplo de resiliencia. En el Main Stage compartirá lo que el deporte y la adversidad le enseñaron sobre disciplina y perseverancia.' },
-  { eje: 'Main Stage', status: 'Por confirmar', num: '03' },
+  { duo: true, eje: 'Ciencia y tecnología', status: 'Confirmados', num: '02·03', photo: 'assets/p-ekaterina-israel.jpg', pos: 'center 30%',
+    people: [
+      { name: 'Ekaterina Kostioukhina', role: 'Médica espacial de Harvard', bio: 'Investiga cómo cuidar la salud humana en misiones espaciales, desde la medicina hasta la hibernación.' },
+      { name: 'Israel Reyes', role: 'Experto internacional en ciberseguridad', bio: 'Protege sistemas y datos frente a amenazas digitales a escala internacional.' }
+    ] },
   { eje: 'Main Stage', status: 'Por confirmar', num: '04' },
   { eje: 'Main Stage', status: 'Por confirmar', num: '05' }
 ];
 
 const SPONSORS = [
   { src: 'assets/logo-oracle.png', alt: 'Oracle' },
-  { src: 'assets/logo-skyhaus.png', alt: 'Skyhaus' },
   { src: 'assets/logo-gdi.png', alt: 'Grupo Diamante Internacional' },
   { src: 'assets/logo-contapro.png', alt: 'ContaPro' }
 ];
@@ -916,6 +920,43 @@ const PON_TILT = [-3, 2.4, -1.8, 3, -2.2];
 const ponentesGrid = document.getElementById('ponentesGrid');
 ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   const c = ACCENTS[i % ACCENTS.length];
+  if (p.duo) {
+    const [a, b] = p.people;
+    return `
+  <div class="reveal col-span-2 h-full" style="transition-delay:${i * 90}ms">
+    <div class="pon-wrap h-full">
+      <img class="pon-swatch" src="${PON_SWATCH[i % PON_SWATCH.length]}" alt="" aria-hidden="true" loading="lazy">
+      <div class="flip-card pon-card pon-duo" role="button" tabindex="0" aria-label="${a.name} e ${b.name}, ponentes en dupla. Voltear tarjeta">
+        <div class="flip-inner">
+          <div class="flip-face">
+            <img src="${p.photo}" alt="${a.name} e ${b.name}" class="absolute inset-0 w-full h-full object-cover" style="object-position:${p.pos}">
+            <span class="absolute top-3 right-3 font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase bg-npink text-[#031447] px-2.5 py-1 rounded-full">${p.status} · Dúo</span>
+            <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:#ffffff">${p.num}</div>
+            <div class="duo-amp absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 note text-[70px] sm:text-[84px] leading-none text-npink" aria-hidden="true">&amp;</div>
+            <div class="absolute inset-x-0 bottom-0 bg-navy/95 border-t-4 border-npink grid grid-cols-2">
+              <div class="px-4 pt-3 pb-4 border-r border-white/15">
+                <div class="t-display text-[17px] sm:text-[21px] leading-none text-white">${a.name}</div>
+                <div class="text-[12px] leading-snug text-white/80 mt-1.5">${a.role}</div>
+              </div>
+              <div class="px-4 pt-3 pb-4">
+                <div class="t-display text-[17px] sm:text-[21px] leading-none text-white">${b.name}</div>
+                <div class="text-[12px] leading-snug text-white/80 mt-1.5">${b.role}</div>
+              </div>
+            </div>
+          </div>
+          <div class="flip-face flip-back p-5 sm:p-6 flex flex-col justify-center border-2 border-npink" style="background:#031447">
+            <div class="note text-[22px] text-npink rotate-[-2deg]">Dos miradas, un mismo escenario</div>
+            <div class="grid grid-cols-2 gap-5 mt-4">
+              <div><div class="font-heading font-bold text-[15px] uppercase tracking-wide text-white">${a.name.split(' ')[0]}</div><p class="text-[13px] leading-relaxed text-white/80 mt-1">${a.bio}</p></div>
+              <div><div class="font-heading font-bold text-[15px] uppercase tracking-wide text-white">${b.name.split(' ')[0]}</div><p class="text-[13px] leading-relaxed text-white/80 mt-1">${b.bio}</p></div>
+            </div>
+            <div class="font-heading font-semibold text-[11px] tracking-[.28em] uppercase text-npink mt-5">${p.eje} · Charla en dupla</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  }
   if (p.photo) return `
   <div class="reveal" style="transition-delay:${i * 90}ms">
     <div class="pon-wrap">
