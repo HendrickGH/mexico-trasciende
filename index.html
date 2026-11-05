@@ -393,7 +393,8 @@
         <svg class="draw shrink-0" width="46" height="52" viewBox="0 0 56 70" fill="none" stroke="#ff7a1a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 4 C 2 24, 14 46, 42 60"/><path pathLength="1" d="M28 62 L43 61 L38 47"/></svg>
       </div>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mt-14 px-2 lg:px-3" id="ponentesGrid"></div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 mt-14 px-2 lg:px-3" id="ponentesGrid"></div>
+    <p class="text-[12.5px] text-white/50 mt-8 px-2 lg:px-3">*Asiste a título personal y no en representación de ninguna empresa.</p>
   </div>
   <img src="assets/torn-navy-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
 </section>
@@ -655,15 +656,19 @@ const ESPACIOS = [
 ];
 
 const PONENTES = [
-  { eje: 'Main Stage', status: 'Confirmado', num: '01', name: 'Gerardo Galindo', role: 'Ex-capitán de los Pumas, bicampeón y sobreviviente de cáncer', photo: 'assets/p-gerardo.png', pos: 'center 12%',
-    bio: 'Fue capitán de los Pumas de la UNAM y bicampeón del futbol mexicano. Tras enfrentar un cáncer volvió a la vida pública como ejemplo de resiliencia. En el Main Stage compartirá lo que el deporte y la adversidad le enseñaron sobre disciplina y perseverancia.' },
-  { duo: true, eje: 'Ciencia y tecnología', status: 'Confirmados', num: '02·03', photo: 'assets/p-ekaterina-israel.jpg', pos: 'center 30%',
+  { eje: 'Economía y sociedad', status: 'Confirmada', num: '01', name: 'Martha León', role: 'Vicepresidenta de la CONSAR', photo: 'assets/p-martha.jpg', pos: '50% 20%',
+    bio: 'Vicepresidenta de la CONSAR, la Comisión Nacional del Sistema de Ahorro para el Retiro.' },
+  { eje: 'Liderazgo', status: 'Confirmado', num: '02', name: 'Fernando Anzures', role: 'Ex CEO de Coca-Cola, ex director comercial de Red Bull y fundador de EXMA', photo: 'assets/p-fernando.jpg', pos: '50% 20%',
+    bio: 'Fue CEO de Coca-Cola y director comercial de Red Bull. Es fundador de EXMA.' },
+  { duo: true, eje: 'Ciencia y tecnología', status: 'Confirmados', num: '03', photo: 'assets/p-ekaterina-israel.jpg', pos: 'center 30%',
     people: [
-      { name: 'Ekaterina Kostioukhina', role: 'Médica espacial de Harvard', bio: 'Investiga cómo cuidar la salud humana en misiones espaciales, desde la medicina hasta la hibernación.' },
-      { name: 'Israel Reyes', role: 'Experto internacional en ciberseguridad', bio: 'Protege sistemas y datos frente a amenazas digitales a escala internacional.' }
+      { name: 'Ekaterina Kostioukhina', role: 'Médica espacial de Harvard', bio: 'Médica espacial de Harvard; investiga cómo cuidar la salud humana en misiones espaciales.' },
+      { name: 'Israel Reyes', role: 'Experto internacional en ciberseguridad', bio: 'Experto internacional en ciberseguridad.' }
     ] },
-  { eje: 'Main Stage', status: 'Por confirmar', num: '04' },
-  { eje: 'Main Stage', status: 'Por confirmar', num: '05' }
+  { eje: 'Negocios', status: 'Confirmado', num: '04', name: 'Armando Herrera', role: 'Director saliente de Nu* y ex vicepresidente en American Express', photo: 'assets/p-armando.jpg', pos: '50% 20%',
+    bio: 'Director saliente de Nu y ex vicepresidente en American Express. *Asiste a título personal y no en representación de ninguna empresa.' },
+  { eje: 'Deporte', status: 'Confirmado', num: '05', name: 'Gerardo Galindo', role: 'Bicampeón con los Pumas y ex capitán de Rayados', photo: 'assets/p-gerardo.jpg', pos: '50% 15%',
+    bio: 'Bicampeón con los Pumas y ex capitán de Rayados.' }
 ];
 
 const SPONSORS = [
@@ -689,7 +694,7 @@ const ESCUELAS = [
 const FAQS = [
   { q: '¿Dónde compro mi boleto?', a: 'En Market TEC, la plataforma oficial del Tecnológico de Monterrey. El botón de esta página te lleva directo.' },
   { q: '¿Es solo para estudiantes del Tec?', a: 'No. El foro está dirigido a jóvenes de preparatoria y universidad de cualquier institución, además de EXATEC, empresas aliadas y público interesado en liderazgo e impacto social.' },
-  { q: '¿Qué incluye la entrada?', a: 'Acceso al Main Stage —cinco conferencias—, al Jardín de Innovación y al Networking Lounge.' }
+  { q: '¿Qué incluye la entrada?', a: 'Acceso a las conferencias del Main Stage y al Jardín de Innovación, kit de participante y reconocimiento con valor curricular. Precio especial para estudiantes: $350.00 (precio regular $550.00).' }
 ];
 
 const ARROW = '<svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
@@ -970,12 +975,13 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
             <div class="absolute inset-x-0 bottom-0 bg-navy/95 px-4 pt-3 pb-4 border-t-4 border-npink">
               <div class="t-display text-[20px] sm:text-[24px] leading-none text-white">${p.name}</div>
               <div class="text-[12.5px] leading-snug text-white/80 mt-1.5">${p.role}</div>
+              <div class="font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase text-npink mt-2">${p.eje}</div>
             </div>
           </div>
-          <div class="flip-face flip-back p-5 flex flex-col justify-center border-2 border-npink" style="background:#031447">
-            <div class="note text-[22px] text-npink rotate-[-3deg]">Conoce a ${p.name.split(' ')[0]}</div>
-            <p class="text-[13.5px] leading-relaxed text-white/85 mt-3">${p.bio}</p>
-            <div class="font-heading font-semibold text-[11px] tracking-[.28em] uppercase text-npink mt-4">${p.eje} · ${p.num}</div>
+          <div class="flip-face flip-back p-3 sm:p-5 flex flex-col justify-center border-2 border-npink" style="background:#031447">
+            <div class="note text-[16px] sm:text-[22px] text-npink rotate-[-3deg]">Conoce a ${p.name.split(' ')[0]}</div>
+            <p class="text-[11.5px] sm:text-[13.5px] leading-snug sm:leading-relaxed text-white/85 mt-2 sm:mt-3">${p.bio}</p>
+            <div class="font-heading font-semibold text-[9.5px] sm:text-[11px] tracking-[.2em] sm:tracking-[.28em] uppercase text-npink mt-2 sm:mt-4">${p.eje} · ${p.num}</div>
           </div>
         </div>
       </div>
@@ -1010,6 +1016,28 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
     </div>
   </div>`;
 }).join('');
+ponentesGrid.insertAdjacentHTML('beforeend', `
+  <div class="reveal col-span-2" style="transition-delay:${PONENTES.length * 90}ms">
+    <div class="ticket-card h-full rounded-2xl border-2 border-npink bg-navy p-6 sm:p-7 flex flex-col justify-between gap-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div class="eyebrow">Inversión</div>
+          <div class="flex items-baseline gap-3 mt-3">
+            <span class="font-heading font-semibold text-[22px] text-white/50 line-through">$550.00</span>
+            <span class="t-display text-[54px] sm:text-[64px] leading-none text-npink">$350.00</span>
+          </div>
+          <div class="note text-[19px] text-white/85 mt-1">Precio especial para estudiantes</div>
+        </div>
+        <a href="${'""" + URL + """'}" target="_blank" rel="noopener" class="btn btn-pink">Comprar boletos ${ARROW.replace('width="20" height="20"', 'width="18" height="18"')}</a>
+      </div>
+      <div>
+        <div class="font-heading font-semibold text-[12px] tracking-[.3em] uppercase text-white/60 mb-3">Tu boleto incluye</div>
+        <ul class="grid grid-cols-2 gap-x-5 gap-y-3 text-[14.5px] text-white">
+          ${[['star', 'Reconocimiento con valor curricular'], ['layers', 'Kit de participante'], ['mic', 'Acceso a conferencias'], ['pin', 'Acceso al Jardín de Innovación']].map(([ic, t]) => `<li class="flex items-center gap-3"><span class="ic-bubble !w-9 !h-9 !bg-npink/15">${icon(ic, 18)}</span><span>${t}</span></li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  </div>`);
 ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
   const flip = () => card.classList.toggle('flipped');
   card.addEventListener('click', () => { if (!matchMedia('(hover: hover)').matches) flip(); });
