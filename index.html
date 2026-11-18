@@ -184,6 +184,8 @@
   .pon-card { position: relative; aspect-ratio: 2 / 3; cursor: pointer; box-shadow: 0 30px 50px -26px rgba(0,0,0,.8); border-radius: 16px; }
   .pon-duo { aspect-ratio: 1 / 1; }
   @media (min-width: 1024px) { .pon-duo { aspect-ratio: auto; height: 100%; } }
+  @keyframes qpulse { 0%,100% { transform: scale(1) rotate(-4deg); } 50% { transform: scale(1.08) rotate(3deg); } }
+  .sorpresa-q { animation: qpulse 4.5s ease-in-out infinite; text-shadow: 0 6px 30px rgba(255,122,26,.4); }
   .duo-amp { text-shadow: 0 4px 18px rgba(3,20,71,.55); }
 
   /* ---------- faq ---------- */
@@ -214,6 +216,30 @@
   .logo-img { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; filter: grayscale(1); opacity: .68; transition: filter .35s ease, opacity .35s ease; }
   .logo-card:hover .logo-img { filter: none; opacity: 1; }
 
+
+  /* ---------- agenda ---------- */
+  .tl { position: relative; --tw: 64px; --tg: 12px; }
+  .tl::before { content: ''; position: absolute; top: 28px; bottom: 28px; left: calc(var(--tw) + var(--tg) + 11px); width: 2px; background: rgba(255,255,255,.16); }
+  .tl-row { position: relative; display: grid; grid-template-columns: var(--tw) 24px 1fr; column-gap: var(--tg); align-items: start; padding: 9px 0; }
+  .tl-time { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.1; color: #fff; text-align: right; padding-top: 14px; font-variant-numeric: tabular-nums; }
+  .tl-dot { position: relative; z-index: 1; width: 24px; height: 24px; margin-top: 12px; border-radius: 999px; border: 3px solid #020d36; box-shadow: 0 0 0 2px rgba(255,255,255,.25); background: #031447; transition: transform .3s cubic-bezier(.2,.7,.3,1); }
+  .tl-row:hover .tl-dot { transform: scale(1.25); }
+  .tl-dot.talk { background: #ff7a1a; box-shadow: 0 0 0 2px #ff7a1a, 0 0 22px rgba(255,122,26,.55); }
+  .tl-dot.tec { background: #fff; box-shadow: 0 0 0 2px #fff, 0 0 16px rgba(255,255,255,.35); }
+  .tl-dot.rest { background: #020d36; box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+  .tl-card { padding: 12px 18px 13px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); transition: background-color .3s ease, border-color .3s ease, transform .3s cubic-bezier(.2,.7,.3,1); }
+  .tl-card.talk { background: rgba(255,122,26,.1); border-color: rgba(255,122,26,.45); }
+  .tl-row:hover .tl-card { background: rgba(255,255,255,.08); transform: translateX(4px); }
+  .tl-kind { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: .26em; text-transform: uppercase; color: #ff7a1a; }
+  .tl-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 23px; line-height: 1.08; color: #fff; margin-top: 2px; }
+  .tl-title.big { font-size: 26px; }
+  .tl-place { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.62); margin-top: 5px; margin-right: 14px; }
+  @media (max-width: 640px) {
+    .tl { --tw: 52px; --tg: 10px; }
+    .tl-time { font-size: 18px; padding-top: 15px; }
+    .tl-card { padding: 11px 14px 12px; }
+    .tl-title { font-size: 19px; } .tl-title.big { font-size: 21px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
     .reveal, .reveal-pop { opacity: 1 !important; transform: none !important; }
@@ -235,6 +261,7 @@
     <nav class="hidden lg:flex gap-6 ml-auto font-heading text-[15px] tracking-[.13em] uppercase">
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
+      <a href="#agenda" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
     </nav>
     <span class="hidden xl:flex items-center gap-2 font-heading text-[13px] tracking-[.16em] uppercase text-white/75 whitespace-nowrap">
@@ -251,6 +278,7 @@
     <div class="flex flex-col gap-4 py-4 font-heading text-[15px] tracking-[.13em] uppercase border-t border-white/10">
       <a href="#espacios" class="nav-link">Espacios</a>
       <a href="#ponentes" class="nav-link">Ponentes</a>
+      <a href="#agenda" class="nav-link">Agenda</a>
       <a href="#aliados" class="nav-link">Aliados</a>
       <span class="font-heading text-[13px] tracking-[.16em] text-white/70">Sábado 21 de noviembre 2026 · Campus CCM</span>
       <a href="https://market.tec.mx/mexico-trasciende-4281/p" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 rounded-full bg-npink text-[#031447] font-heading tracking-[.12em] uppercase">Comprar boletos</a>
@@ -420,7 +448,27 @@
       <p class="text-[17px] leading-relaxed text-white/75 mt-4" style="text-wrap:pretty">México Trasciende los reúne en un mismo día, para combatir la indiferencia social inspirando a la juventud a desarrollar iniciativas de impacto real.</p>
     </div>
   </div>
-  <img src="assets/torn-white-c.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+  <img src="assets/torn-coal-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section id="agenda" class="relative bg-coal text-white">
+  <img src="assets/brush-flick.webp" alt="" aria-hidden="true" class="paint paint-in right-[-6%] top-[60px] w-[44%] opacity-80 rotate-[8deg]">
+  <img src="assets/splatter.webp" alt="" aria-hidden="true" class="paint left-[-80px] bottom-[110px] w-[240px] opacity-40" loading="lazy">
+  <div class="relative z-[2] max-w-[1300px] mx-auto px-6 pt-20 lg:pt-28 pb-32 lg:pb-40 grid lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] gap-12 lg:gap-20">
+    <div class="lg:sticky lg:top-28 self-start reveal">
+      <div class="eyebrow">Agenda</div>
+      <h2 class="t-display text-[44px] sm:text-[56px] lg:text-[64px] mt-4">El <span class="hl">día completo</span></h2>
+      <p class="text-[17px] leading-relaxed text-white/75 mt-5 max-w-[440px]">Del registro al cierre, sábado 21 de noviembre en el Campus Ciudad de México. Cinco ponencias, TecTalks, show y espacios para conectar.</p>
+      <div class="flex flex-wrap gap-x-8 gap-y-3 mt-7 font-heading font-semibold text-[13px] tracking-[.22em] uppercase text-white/80">
+        <span class="inline-flex items-center gap-2.5"><span class="w-3 h-3 rounded-full bg-npink"></span>Ponencia</span>
+        <span class="inline-flex items-center gap-2.5"><span class="w-3 h-3 rounded-full bg-white"></span>TecTalk</span>
+      </div>
+      <div class="note text-[24px] text-white/90 mt-9 rotate-[-4deg] max-w-[300px]">Juntos hacemos que las ideas trasciendan</div>
+    </div>
+    <div class="tl" id="agendaList"></div>
+  </div>
+  <img src="assets/torn-white-a.svg" alt="" aria-hidden="true" class="torn torn-bottom z-[5]">
 </section>
 
 <!-- ============ UBICACIÓN + FAQ ============ -->
@@ -633,7 +681,6 @@ const LOUNGE_SPEAKERS = [
   { name: 'Alejandro Madrigal', photo: 'assets/l-alejandro.jpg', pos: 'center 32%' },
   { name: 'Ernesto Stein', photo: 'assets/l-ernesto.jpg', pos: 'center 32%' },
   { name: 'Laura Enríquez', photo: 'assets/l-laura.jpg', pos: '40% 28%' },
-  { name: 'Paola Ricaurte', photo: 'assets/l-paola.jpg', pos: 'center 24%' },
   { name: 'Ximena Lama', photo: 'assets/l-ximena.jpg', pos: '62% 26%' },
   { name: 'Francisco Falcone', photo: 'assets/l-francisco.jpg', pos: 'center 32%' },
   { name: 'Cruz Contreras', photo: 'assets/l-cruz.jpg', pos: '55% 26%' }
@@ -656,8 +703,7 @@ const ESPACIOS = [
 ];
 
 const PONENTES = [
-  { eje: 'Humanidades y tecnología', status: 'Confirmada', num: '01', name: 'Paola Ricaurte Quijano', role: 'Coordinadora del hub de América Latina y el Caribe de la Red de IA Feminista', photo: 'assets/p-paola.jpg', pos: '50% 20%',
-    bio: 'Coordinadora del hub de América Latina y el Caribe de la Red de IA Feminista.' },
+  { sorpresa: true, eje: 'Main Stage', status: 'Sorpresa', num: '01' },
   { eje: 'Liderazgo', status: 'Confirmado', num: '02', name: 'Fernando Anzures', role: 'Ex CEO de Coca-Cola, ex director comercial de Red Bull y fundador de EXMA', photo: 'assets/p-fernando.jpg', pos: '50% 20%',
     bio: 'Fue CEO de Coca-Cola y director comercial de Red Bull. Es fundador de EXMA.' },
   { duo: true, eje: 'Ciencia y tecnología', status: 'Confirmados', num: '03', photo: 'assets/p-ekaterina-israel.jpg', pos: 'center 30%',
@@ -925,6 +971,32 @@ const PON_TILT = [-3, 2.4, -1.8, 3, -2.2];
 const ponentesGrid = document.getElementById('ponentesGrid');
 ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   const c = ACCENTS[i % ACCENTS.length];
+  if (p.sorpresa) return `
+  <div class="reveal" style="transition-delay:${i * 90}ms">
+    <div class="pon-wrap">
+      <img class="pon-swatch" src="${PON_SWATCH[i % PON_SWATCH.length]}" alt="" aria-hidden="true" loading="lazy">
+      <div class="flip-card pon-card" role="button" tabindex="0" aria-label="Ponente sorpresa. Voltear tarjeta">
+        <div class="flip-inner">
+          <div class="flip-face" style="background:#04195a">
+            <span class="absolute top-3 right-3 font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase bg-npink text-[#031447] px-2.5 py-1 rounded-full">${p.status}</span>
+            <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:#ffffff">${p.num}</div>
+            <div class="absolute inset-0 grid place-items-center"><div class="t-display text-[150px] sm:text-[170px] leading-none text-npink sorpresa-q">?</div></div>
+            <svg class="absolute left-5 top-[32%] w-5 h-5 text-white anim-twinkle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="currentColor"/></svg>
+            <svg class="absolute right-6 bottom-[32%] w-4 h-4 text-npink anim-twinkle" style="animation-delay:-1.4s" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="currentColor"/></svg>
+            <div class="absolute inset-x-0 bottom-0 bg-navy/95 px-4 pt-3 pb-4 border-t-4 border-npink">
+              <div class="t-display text-[20px] sm:text-[24px] leading-none text-white">Ponente sorpresa</div>
+              <div class="text-[12.5px] leading-snug text-white/80 mt-1.5">Una voz que no te esperas</div>
+              <div class="font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase text-npink mt-2">${p.eje}</div>
+            </div>
+          </div>
+          <div class="flip-face flip-back p-3 sm:p-5 flex flex-col justify-center border-2 border-npink" style="background:#031447">
+            <div class="note text-[16px] sm:text-[22px] text-npink rotate-[-3deg]">¡Sorpresa!</div>
+            <p class="text-[11.5px] sm:text-[13.5px] leading-snug sm:leading-relaxed text-white/85 mt-2 sm:mt-3">Lo revelaremos el día del evento. Síguenos en Instagram @trasciende_tec para no perderte las pistas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
   if (p.duo) {
     const [a, b] = p.people;
     return `
@@ -1043,6 +1115,37 @@ ponentesGrid.querySelectorAll('.flip-card').forEach(card => {
   card.addEventListener('click', () => { if (!matchMedia('(hover: hover)').matches) flip(); });
   card.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); flip(); } });
 });
+
+// ---------- agenda ----------
+const CARPA = 'Carpa de eventos';
+const AGENDA = [
+  { t: '07:00', title: 'Registro', place: [CARPA], type: 'rest' },
+  { t: '08:00', title: 'Bienvenida', place: [CARPA], type: 'rest' },
+  { t: '08:30', kind: 'Ponencia 1', title: 'Armando Herrera', place: [CARPA], type: 'talk' },
+  { t: '09:30', kind: 'Ponencia 2', title: 'Ekaterina Kostioukhina & Israel Reyes', place: [CARPA], type: 'talk' },
+  { t: '10:30', kind: 'TecTalk', title: 'Iván Ibarra', place: [CARPA], type: 'tec' },
+  { t: '10:40', title: 'Break & Networking', place: [CARPA], type: 'rest' },
+  { t: '11:30', kind: 'Ponencia 3', title: 'Ponente sorpresa ✦', place: [CARPA], type: 'talk' },
+  { t: '12:30', title: 'Show', place: [CARPA], type: 'rest' },
+  { t: '13:00', title: 'Break', place: [CARPA], type: 'rest' },
+  { t: '13:50', title: 'Networking Lounge & Jardín de Innovación', place: [CARPA, 'Jardín A2'], type: 'rest' },
+  { t: '15:50', kind: 'Ponencia 4', title: 'Gerardo Galindo', place: [CARPA], type: 'talk' },
+  { t: '16:50', kind: 'TecTalk', title: 'Ximena Cortes Taibo', place: [CARPA], type: 'tec' },
+  { t: '17:00', kind: 'Ponencia 5', title: 'Fernando Anzures', place: [CARPA], type: 'talk' },
+  { t: '18:00', title: 'Cierre', place: [CARPA], type: 'rest' }
+];
+const agendaList = document.getElementById('agendaList');
+agendaList.innerHTML = AGENDA.map(r => `
+  <div class="tl-row">
+    <div class="tl-time">${r.t}</div>
+    <span class="tl-dot ${r.type}" aria-hidden="true"></span>
+    <div class="tl-card ${r.type === 'talk' ? 'talk' : ''}">
+      ${r.kind ? `<div class="tl-kind">${r.kind}</div>` : ''}
+      <div class="tl-title ${r.kind ? 'big' : ''}">${r.title}</div>
+      <div>${r.place.map(pl => `<span class="tl-place"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>${pl}</span>`).join('')}</div>
+    </div>
+  </div>`).join('');
+revealStagger(agendaList, 55);
 
 // ---------- logo walls: taped-on cards ----------
 const TAPES = ['rgba(255,122,26,.55)', 'rgba(255,122,26,.6)', 'rgba(164,61,255,.5)', 'rgba(60,229,210,.55)'];
