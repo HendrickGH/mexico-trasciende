@@ -246,6 +246,7 @@
     .paint-in { clip-path: none !important; }
     .draw path { stroke-dashoffset: 0 !important; }
   }
+@media (max-width:1023px){#sponsorsGrid>.logo-card:last-child:nth-child(odd){grid-column:span 2}}
 </style>
 </head>
 <body class="bg-white text-noir overflow-x-hidden">
@@ -543,7 +544,7 @@
         <span class="font-heading font-semibold text-xs tracking-[.28em] uppercase text-muted whitespace-nowrap">Patrocinadores confirmados</span>
         <span class="flex-1 h-px bg-ink/[.12]"></span>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-5" id="sponsorsGrid"></div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-5" id="sponsorsGrid"></div>
     </div>
 
     <div class="mt-14">
@@ -703,7 +704,7 @@ const ESPACIOS = [
 ];
 
 const PONENTES = [
-  { sorpresa: true, eje: 'Main Stage', status: 'Sorpresa', num: '01' },
+  { sorpresa: true, eje: 'Main Stage', status: 'Confirmado', num: '01', name: 'Federico Cerdas' },
   { eje: 'Liderazgo', status: 'Confirmado', num: '02', name: 'Fernando Anzures', role: 'Ex CEO de Coca-Cola, ex director comercial de Red Bull y fundador de EXMA', photo: 'assets/p-fernando.jpg', pos: '50% 20%',
     bio: 'Fue CEO de Coca-Cola y director comercial de Red Bull. Es fundador de EXMA.' },
   { duo: true, eje: 'Ciencia y tecnología', status: 'Confirmados', num: '03', photo: 'assets/p-ekaterina-israel.jpg', pos: 'center 30%',
@@ -720,7 +721,9 @@ const PONENTES = [
 const SPONSORS = [
   { src: 'assets/logo-oracle.png', alt: 'Oracle' },
   { src: 'assets/logo-gdi.png', alt: 'Grupo Diamante Internacional' },
-  { src: 'assets/logo-contapro.png', alt: 'ContaPro' }
+  { src: 'assets/logo-contapro.png', alt: 'ContaPro' },
+  { src: 'assets/logo-santas-alitas.png', alt: 'Santas Alitas' },
+  { src: 'assets/logo-cassava-roots.png', alt: 'Cassava Roots Tapioca Tea' }
 ];
 const AREAS = [
   { src: 'assets/l-vinculacion.png', alt: 'Centro de Vinculación y Desarrollo Profesional' },
@@ -975,23 +978,23 @@ ponentesGrid.innerHTML = PONENTES.map((p, i) => {
   <div class="reveal" style="transition-delay:${i * 90}ms">
     <div class="pon-wrap">
       <img class="pon-swatch" src="${PON_SWATCH[i % PON_SWATCH.length]}" alt="" aria-hidden="true" loading="lazy">
-      <div class="flip-card pon-card" role="button" tabindex="0" aria-label="Ponente sorpresa. Voltear tarjeta">
+      <div class="flip-card pon-card" role="button" tabindex="0" aria-label="${p.name}. Voltear tarjeta">
         <div class="flip-inner">
           <div class="flip-face" style="background:#04195a">
             <span class="absolute top-3 right-3 font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase bg-npink text-[#031447] px-2.5 py-1 rounded-full">${p.status}</span>
             <div class="absolute top-3 left-4 t-display num-outline text-[46px] leading-none" style="--stroke:#ffffff">${p.num}</div>
-            <div class="absolute inset-0 grid place-items-center"><div class="t-display text-[150px] sm:text-[170px] leading-none text-npink sorpresa-q">?</div></div>
+            <div class="absolute inset-0 grid place-items-center"><div class="t-display text-[120px] sm:text-[140px] leading-none text-npink">FC</div></div>
             <svg class="absolute left-5 top-[32%] w-5 h-5 text-white anim-twinkle" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="currentColor"/></svg>
             <svg class="absolute right-6 bottom-[32%] w-4 h-4 text-npink anim-twinkle" style="animation-delay:-1.4s" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23.5 16.5 L40 20 L23.5 23.5 L20 40 L16.5 23.5 L0 20 L16.5 16.5 Z" fill="currentColor"/></svg>
             <div class="absolute inset-x-0 bottom-0 bg-navy/95 px-4 pt-3 pb-4 border-t-4 border-npink">
-              <div class="t-display text-[20px] sm:text-[24px] leading-none text-white">Ponente sorpresa</div>
-              <div class="text-[12.5px] leading-snug text-white/80 mt-1.5">Una voz que no te esperas</div>
+              <div class="t-display text-[20px] sm:text-[24px] leading-none text-white">${p.name}</div>
+              <div class="text-[12.5px] leading-snug text-white/80 mt-1.5">Ponente de la Main Stage</div>
               <div class="font-heading font-semibold text-[10.5px] tracking-[.24em] uppercase text-npink mt-2">${p.eje}</div>
             </div>
           </div>
           <div class="flip-face flip-back p-3 sm:p-5 flex flex-col justify-center border-2 border-npink" style="background:#031447">
-            <div class="note text-[16px] sm:text-[22px] text-npink rotate-[-3deg]">¡Sorpresa!</div>
-            <p class="text-[11.5px] sm:text-[13.5px] leading-snug sm:leading-relaxed text-white/85 mt-2 sm:mt-3">Lo revelaremos el día del evento. Síguenos en Instagram @trasciende_tec para no perderte las pistas.</p>
+            <div class="note text-[16px] sm:text-[22px] text-npink rotate-[-3deg]">¡Bienvenido!</div>
+            <p class="text-[11.5px] sm:text-[13.5px] leading-snug sm:leading-relaxed text-white/85 mt-2 sm:mt-3">Federico Cerdas se une a la Main Stage. Pronto compartiremos más sobre su trayectoria en Instagram @trasciende_tec.</p>
           </div>
         </div>
       </div>
@@ -1125,7 +1128,7 @@ const AGENDA = [
   { t: '09:30', kind: 'Ponencia 2', title: 'Ekaterina Kostioukhina & Israel Reyes', place: [CARPA], type: 'talk' },
   { t: '10:30', kind: 'TecTalk', title: 'Iván Ibarra', place: [CARPA], type: 'tec' },
   { t: '10:40', title: 'Break & Networking', place: [CARPA], type: 'rest' },
-  { t: '11:30', kind: 'Ponencia 3', title: 'Ponente sorpresa ✦', place: [CARPA], type: 'talk' },
+  { t: '11:30', kind: 'Ponencia 3', title: 'Federico Cerdas', place: [CARPA], type: 'talk' },
   { t: '12:30', title: 'Show', place: [CARPA], type: 'rest' },
   { t: '13:00', title: 'Break', place: [CARPA], type: 'rest' },
   { t: '13:50', title: 'Networking Lounge & Jardín de Innovación', place: [CARPA, 'Jardín A2'], type: 'rest' },
